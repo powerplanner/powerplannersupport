@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://support.powerplanner.net',
 	integrations: [
 		starlight({
 			title: 'Power Planner Support',
