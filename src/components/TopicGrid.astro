@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+
+const categories = [
+  { label: 'FAQ', directory: 'faq' },
+  { label: 'Schedule', directory: 'schedule' },
+  { label: 'Tasks & events', directory: 'tasks-and-events' },
+  { label: 'Classes', directory: 'classes' },
+  { label: 'Grades', directory: 'grades' },
+  { label: 'Years & semesters', directory: 'years-and-semesters' },
+  { label: 'Miscellaneous', directory: 'misc' },
+];
+
+const allDocs = await getCollection('docs');
+
+const grouped = categories.map(({ label, directory }) => {
+  const pages = allDocs
+    .filter(p => p.id.startsWith(directory + '/'))
+    .sort((a, b) => {
+      const ao = a.data.sidebar?.order ?? 999;
+      const bo = b.data.sidebar?.order ?? 999;
+      return ao - bo;
+    });
+  return { label, directory, pages };
+}).filter(g => g.pages.length > 0);
+---
+
+<div class="topic-grid">
+  {grouped.map(({ label, directory, pages }) => (
+    <div class="topic-card">
+      <h2>{label}</h2>
+      <ul>
+        {pages.map(page => (
+          <li>
+            <a href={`/${page.id}/`}>{page.data.sidebar?.label ?? page.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+
+<style>
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1100px) {
+    .topic-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .topic-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .topic-card {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    box-sizing: border-box;
+    height: 100%;
+    margin-top: 0 !important;
+  }
+
+  .topic-card h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem !important;
+    border: none;
+    padding: 0;
+  }
+
+  .topic-card h2 a {
+    color: var(--sl-color-accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .topic-card h2 a:hover {
+    text-decoration: underline;
+  }
+
+  .topic-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .topic-card ul a {
+    font-size: 0.9rem;
+    color: var(--sl-color-text);
+    text-decoration: none;
+  }
+
+  .topic-card ul a:hover {
+    color: var(--sl-color-accent);
+    text-decoration: underline;
+  }
+</style>
