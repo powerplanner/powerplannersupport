@@ -1,6 +1,6 @@
 ---
 title: Platforms
-description: Power Planner is available on iOS, Android, Windows, and web.
+description: Power Planner is available on iOS, Android, Windows, Mac, and web.
 sidebar:
   order: 0
 ---
@@ -11,7 +11,8 @@ You can use Power Planner from the following platforms...
 
 | Platform | Device types | Download link |
 |--|--|--|
-| iOS | iPhone, iPad, and ARM-based Mac computers | [Download on App Store](https://itunes.apple.com/app/power-planner-homework-grades/id1278178608?mt=8) |
+| iOS | iPhone, iPad | [Download on App Store](https://apps.apple.com/app/power-planner-homework-more/id1278178608) |
 | Android | Phones, tablets, and Chromebooks | [Download on Google Play](https://play.google.com/store/apps/details?id=com.barebonesdev.powerplanner) |
 | Windows | Windows 10+, computers and tablets | [Download on Microsoft Store](https://apps.microsoft.com/detail/9WZDNCRFJ25V) |
+| Mac | Mac computers | [Download on App Store](https://apps.apple.com/app/power-planner-homework-more/id1278178608?platform=mac ) |
 | Web (beta) | Web browsers | https://app.powerplanner.net |
