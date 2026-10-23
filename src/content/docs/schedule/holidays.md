@@ -2,7 +2,7 @@
 title: Holidays
 description: You can add holidays or breaks to your schedule. For example, you can add Spring Break so that your classes don't appear over your break!
 sidebar:
-  order: 5
+  order: 6
 ---
 
 You can add holidays or breaks to your schedule. For example, you can add Spring Break so that your classes don't appear over your break!
